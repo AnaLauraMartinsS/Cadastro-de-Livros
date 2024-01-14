@@ -1,0 +1,172 @@
+<div class="container">
+  <h3>Livros Cadastrados</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nº</th>
+        <th>Nome Livro</th>
+        <th>Quantidade</th>
+        <th>Editora</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let livro of listaLivro; let i = index">
+        <th>{{ i + 1 }}</th>
+        <td>{{ livro.nome }}</td>
+        <td>{{ livro.qtdLivro }}</td>
+        <td>{{ livro.editora }}</td>
+        <td>
+          <button class="btn btn-outline-primary" (click)="excluirLivro(i)">
+            Excluir
+          </button>
+          <button
+            class="btn btn-outline-success"
+            data-bs-toggle="modal"
+            data-bs-target="#modalLivros"
+            (click)="salvarEdicao(i, 'Livro')"
+          >
+            Editar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br />
+
+  <h3>Autores Cadastrados</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nº</th>
+        <th>Autores</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let autores of listaAutores; let i = index">
+        <th>{{ i + 1 }}</th>
+        <td>{{ autores.nome }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            (click)="excluirAutor(i)"
+          >
+            Excluir
+          </button>
+          <button
+            class="btn btn-outline-success"
+            data-bs-toggle="modal"
+            data-bs-target="#modalAutores"
+            (click)="salvarEdicao(i, 'Autor')"
+          >
+            Editar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div
+  class="modal fade"
+  id="modalLivros"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Livros</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Nome:</p>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="livroEdicao"
+          placeholder="Título do livro"
+        />
+        <p class="mt-2">Quantidade:</p>
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="qtdLivroEdicao"
+          placeholder="Quantidade"
+        />
+        <p class="mt-2">Nome da editora:</p>
+        <input
+          type="string"
+          class="form-control"
+          [(ngModel)]="editoraEdicao"
+          placeholder="Nome da editora"
+        />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Fechar
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="editarLivro()"
+          data-bs-dismiss="modal"
+        >
+          Salvar Mudanças
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="modalAutores"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Autor</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Nome:</p>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="nomeAutorEdicao"
+          placeholder="Nome do Autor"
+        />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Fechar
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="editarAutor()"
+          data-bs-dismiss="modal"
+        >
+          Salvar Mudanças
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

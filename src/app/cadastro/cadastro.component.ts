@@ -16,9 +16,18 @@ export class CadastroComponent {
   editora!: string;
   autores!: string;
 
+  livroEdicao!: string;
+  qtdLivroEdicao!: number;
+  editoraEdicao!: string;
+
+  indexEdicao!: number;
+
   listaLivro!:ICadastroLivro[];
   listaAutores!:ICadastroAutor[];
   listaEditoras!:string;
+
+  nomeAutorEdicao!: string;
+ 
 
   constructor (private cadastroService: CadastroService){
     this.listaLivro = this.cadastroService.livro;
@@ -29,13 +38,9 @@ export class CadastroComponent {
   adicionarNovoLivro():void{
     this.cadastroService.adicionarLivro(this.livro, this.qtdLivro, this.editora)
   }
-  excluirLivro(index:number): void{
-    this.cadastroService.excluirLivro(index)
-}
+
   adicionarNovoAutor():void{
     this.cadastroService.adicionarAutor(this.autores)
   }
-  excluirAutor(index:number):void{
-    this.cadastroService.excluirAutor(index)
-  }
+ 
 }

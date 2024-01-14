@@ -47,8 +47,33 @@ export class CadastroService{
     this.autor.push(novoAutor)
     }
 
-
     excluirAutor(index: number):void{
         this.autor.splice(index, 1)
     }
+
+    editarAutor(index: number, autorRecebido: string): void{
+        const novoAutor: ICadastroAutor = {
+            nome: autorRecebido
+        }
+        this.autor[index] = novoAutor;
+    }
+
+    getAutor(index: number): ICadastroAutor {
+        return this.autor[index] 
+    }
+
+
+    editarLivro(index: number, livroRecebido: string, qtdLivroRecebido: number, editoraRecebido: string): void{
+        const novoLivro: ICadastroLivro = {
+            nome: livroRecebido,
+            qtdLivro: qtdLivroRecebido,
+            editora: editoraRecebido
+        }
+        this.livro[index] = novoLivro;
+    }
+
+    getLivro(index: number): ICadastroLivro {
+        return this.livro[index] 
+    }
+
 }

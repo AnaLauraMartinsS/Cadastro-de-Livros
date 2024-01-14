@@ -1,24 +1,24 @@
     <div class="container-fluid">
-        <h1> Cadastro de Livros </h1>
+        <h2> Cadastro de Livros </h2>
     <br>
         <div class="row row-cols-3">
             <div class="col-4">
                 <div class="mb-1">
                    <strong>NOME:</strong> 
                 </div>
-                <input type="text" class="form-control" [(ngModel)] = "livro">
+                <input type="text" class="form-control" [(ngModel)] = "livro" placeholder="Título do livro">
             </div>
             <div class="col-4">
                 <div class="mb-1">
                    <strong> QUANTIDADE:</strong> 
                 </div>
-                <input type="number" class="form-control" [(ngModel)] = "qtdLivro">
+                <input type="number" class="form-control" [(ngModel)] = "qtdLivro" placeholder="Quantidade">
             </div>
             <div class="col-4">
                 <div class="mb-1">
                     <strong>EDITORA:</strong>
                 </div>
-                <input type="string" class="form-control" [(ngModel)] = "editora">
+                <input type="string" class="form-control" [(ngModel)] = "editora" placeholder="Nome da editora">
             </div>
         </div>
         <div class="d-flex flex-row-reverse mt-2">
@@ -30,55 +30,10 @@
             <div class="col-4">
                 <div class="mb-1">
                     <strong>AUTORES:</strong>
-                    <input type="text" class="form-control" [(ngModel)]="autores">
+                    <input type="text" class="form-control" [(ngModel)]="autores" placeholder="Nome do autor">
                 </div>
             </div>
         </div>
         <div class="d-flex align-item-center flex-row-reverse">
             <button class="btn btn-primary" (click)="adicionarNovoAutor()">Adicionar</button>
         </div>
-    
-        <div class="container">
-            <h3>Livros Cadastrados</h3>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Nº</th>
-                        <th>Nome Livro</th>
-                        <th>Quantidade</th>
-                        <th>Editora</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let livro of listaLivro; let i = index">
-                        <th>{{i+1}}</th>
-                        <td>{{livro.nome}}</td>
-                        <td>{{livro.qtdLivro}}</td>
-                        <td>{{livro.editora}}</td>
-                        <td><button class="btn btn-primary" (click)="excluirLivro(i)">Excluir</button></td>
-                    </tr>
-                </tbody>
-            </table>
-            <br>
-
-            <h3>Autores Cadastrados</h3>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Nº</th>
-                              <th>Autores</th>
-                              <th>Ações</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr *ngFor="let autores of listaAutores; let i = index">
-                                <th>{{i+1}}</th>
-                                <td>{{autores.nome}}</td>
-                                <td><button type="button" class="btn btn-outline-primary" (click)="excluirAutor(i)">Excluir</button></td>
-                            </tr>
-                          </tbody>
-                    </table>
-        </div>
-    </div>
-    <br>
